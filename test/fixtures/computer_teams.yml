@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team_name: MyString
+  gameday_id: MyString
+  team_city: MyString
+
+two:
+  team_name: MyString
+  gameday_id: MyString
+  team_city: MyString

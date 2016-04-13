@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  computer_team_id: 1
+  fantasy_points: 1
+  date: 2016-04-13 12:30:53
+
+two:
+  computer_team_id: 1
+  fantasy_points: 1
+  date: 2016-04-13 12:30:53

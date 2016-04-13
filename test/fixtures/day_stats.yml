@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-04-13 12:26:20
+  avg: 1
+  ab: 1
+  h: 1
+  bb: 1
+  so: 1
+  r: 1
+  sb: 1
+  hr: 1
+  rbi: 1
+  single: 1
+  double: 1
+  triple: 1
+  player_id: 1
+
+two:
+  date: 2016-04-13 12:26:20
+  avg: 1
+  ab: 1
+  h: 1
+  bb: 1
+  so: 1
+  r: 1
+  sb: 1
+  hr: 1
+  rbi: 1
+  single: 1
+  double: 1
+  triple: 1
+  player_id: 1
