@@ -1,0 +1,22 @@
+<h1>Player List</h1>
+
+
+<form action="/ranking" method="get">
+  <input type="submit" value="Get Rankings">
+</form>
+
+<div class='rankings'>
+  <% if !$rankings.nil? %>
+    <% $rankings.each do |position| %>
+      <%= position['abbr'] %><br>
+      <% position['players'].each do |player| %>
+        Rank <%= player['rank'] %> <%= player['fullname'] %> <%= player['position'] %> <%= player['id'] %><br>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<!-- <form action="/search_stats" method="get">
+  <input type="text" placeholder="Player ID" name="input">
+  <input type="submit" value="Submit This Form">
+</form> -->
