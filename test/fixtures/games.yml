@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  computer_team_id: 1
+  date: 2016-04-13 12:09:47
+  user_win: false
+  user_points: 1
+  computer_team_points: 1
+
+two:
+  user_id: 1
+  computer_team_id: 1
+  date: 2016-04-13 12:09:47
+  user_win: false
+  user_points: 1
+  computer_team_points: 1
