@@ -1,5 +1,15 @@
 class Gameday
 
+  def self.setTeam
+    Playercard.where("pro_team_name = ?", "SEA").each do |player|
+      player.update(pro_team_city: "Seattle", pro_team_name: "Mariners")
+    end
+    Playercard.where("pro_team_name = ?", "MIN").each do |player|
+      player.update(pro_team_city: "Minnesota", pro_team_name: "Twins")
+    end
+
+  end
+
   def self.playerNames
     players = yesterdaysPlayers()
     players.each do |player|
@@ -55,3 +65,18 @@ class Gameday
 
 
 end
+  #Code for Updating Playercards with infor from Gameday API
+  # def self.updatePlayercards
+  #   game_array = generateGameDirectoriesArray("2016", "04", "05")
+  #   player_array = []
+  #   game_array.each do |game|
+  #     uri = URI("http://gd2.mlb.com" + game + "/players.xml")
+  #     xml_doc = Nokogiri::XML(Net::HTTP.get(uri))
+  #     xml_doc.css('game team player').each do |player|
+  #       playercard = Playercard.where("first_name = ? AND last_name = ?", player['first'], player['last'])
+  #       if !playercard[0].nil?
+  #         playercard[0].update(pro_team_name: player['team_abbrev'], number: player['num'].to_i, gameday_id: player['id'].to_i)
+  #       end
+  #     end
+  #   end
+  # end
