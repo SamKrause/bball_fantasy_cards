@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413221407) do
+ActiveRecord::Schema.define(version: 20160414193733) do
 
   create_table "computer_day_points", force: :cascade do |t|
     t.integer  "computer_team_id"
-    t.integer  "fantasy_points"
+    t.float    "fantasy_points"
     t.datetime "date"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20160413221407) do
 
   create_table "day_stats", force: :cascade do |t|
     t.datetime "date"
-    t.integer  "avg"
     t.integer  "ab"
     t.integer  "h"
     t.integer  "bb"
@@ -44,9 +43,10 @@ ActiveRecord::Schema.define(version: 20160413221407) do
     t.integer  "double"
     t.integer  "triple"
     t.integer  "playercard_id"
-    t.integer  "fantasy_points"
+    t.float    "fantasy_points"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "hbp"
   end
 
   create_table "games", force: :cascade do |t|
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20160413221407) do
   end
 
   create_table "season_stats", force: :cascade do |t|
-    t.integer  "avg"
+    t.float    "avg"
     t.integer  "ab"
     t.integer  "h"
     t.integer  "bb"
