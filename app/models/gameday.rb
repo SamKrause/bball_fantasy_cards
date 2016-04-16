@@ -1,6 +1,44 @@
 class Gameday
 
-  def self.createPlayerYesterdayStats
+  def self.createYesterdayComputerTeamDayPoints
+    game_array = yesterdaysGames()
+    game_array.each do |game|
+      away = game.split("_")[7]
+      home = game.split("_")[8]
+      ComputerTeam.all.each do |team|
+        if team.gameday_id == away
+          fantasy_points = 0
+          stats_array = getComputerTeamStats(game, "away")
+          stats_array.each do |stat_hash|
+            fantasy_points += calculateFantasyPoints(stat_hash)
+          end
+          ComputerDayPoint.create(date: Date.yesterday.to_s(:db), computer_team_id: team.id, fantasy_points: fantasy_points)
+        elsif team.gameday_id == home
+          fantasy_points = 0
+          stats_array = getComputerTeamStats(game, "home")
+          stats_array.each do |stat_hash|
+            fantasy_points += calculateFantasyPoints(stat_hash)
+          end
+          ComputerDayPoint.create(date: Date.yesterday.to_s(:db), computer_team_id: team.id, fantasy_points: fantasy_points)
+        end
+      end
+    end
+  end
+
+  def self.getComputerTeamStats(game, home_away)
+    stats_array = []
+    uri = URI("http://gd2.mlb.com" + game + "/boxscore.xml")
+    xml_doc = Nokogiri::XML(Net::HTTP.get(uri))
+    xml_doc.css("boxscore batting[team_flag='" + home_away + "'] batter").each do |batter|
+      if (batter['pos'] == 'CF') or (batter['pos'] == 'LF') or (batter['pos'] == 'RF') or (batter['pos'] == 'C') or (batter['pos'] == '1B') or (batter['pos'] == '2B') or (batter['pos'] == '3B') or (batter['pos'] == 'SS')
+        single = (batter['h'].to_i - batter['d'].to_i - batter['t'].to_i - batter['hr'].to_i)
+        stats_array.push({name: batter['name_display_first_last'], ab: batter['ab'], h: batter['h'], single: single.to_s, double: batter['d'], triple: batter['t'], hr: batter['hr'], bb: batter['bb'], rbi: batter['rbi'], so: batter['so'], r: batter['r'], sb: batter['sb'], hbp: batter['hbp']})
+      end
+    end
+    return stats_array
+  end
+
+  def self.createPlayerYesterdayDayStats
     Playercard.select(:gameday_id, :id).each do |player|
       player_stats = batterStats(player.gameday_id.to_s)
       fantasy_points = calculateFantasyPoints(player_stats)
