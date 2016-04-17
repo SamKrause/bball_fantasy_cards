@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BballFantasyCards</title>
+  <title>On Deck</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <a href="/" id="home_link">On Deck</a>
+    <a href="/js/" class="nav_links">Game History</a>
+    <a href="/css/" class="nav_links">Set Lineup</a>
+    <a href="/html/" class="nav_links">Your Deck</a>
+  </nav>
 
 <%= yield %>
 
