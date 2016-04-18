@@ -1,5 +1,12 @@
 class Gameday
 
+
+  def self.updateYesterdayGames
+    createYesterdayComputerTeamDayPoints()
+    createPlayerYesterdayDayStats()
+    updatePlayersSeasonStats()
+  end
+
   def self.createYesterdayComputerTeamDayPoints
     game_array = yesterdaysGames()
     game_array.each do |game|
