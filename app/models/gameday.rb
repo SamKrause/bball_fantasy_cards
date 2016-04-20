@@ -54,17 +54,13 @@ class Gameday
   end
 
   def self.updatePlayersSeasonStats
-    game_array = yesterdaysGames()
     Playercard.select(:gameday_id, :id, :first_name, :last_name).each do |player|
-      game_array.each do |game|
-        uri = URI("http://gd2.mlb.com" + game + "/batters/" + player.gameday_id.to_s + ".xml")
-        response = Net::HTTP.get(uri)
-        if response != "GameDay - 404 Not Found"
-          xml_doc = Nokogiri::XML(response)
-          puts "Found player " + player.first_name + ' ' + player.last_name
-          stats = xml_doc.css('season')[0]
-          SeasonStat.where('playercard_id = ? AND year = ?', player.id, 2016)[0].update(avg: stats['avg'].to_f, ab: stats['ab'].to_i, h: stats['h'].to_i, bb: stats['bb'].to_i, so: stats['so'].to_i, r: stats['r'].to_i, sb: stats['sb'].to_i, hr: stats['hr'].to_i, rbi: stats['rbi'].to_i)
-        end
+      date = Date.yesterday
+      uri = URI("http://gd2.mlb.com/components/game/mlb/year_" + date.to_s(:year) + "/month_" + date.to_s(:month) + "/day_" + date.to_s(:day) + "/batters/"+ player.gameday_id.to_s + "_1.xml")
+      xml_doc = Nokogiri::XML(Net::HTTP.get(uri))
+      stats = xml_doc.css('batting')[0]
+      if !stats.nil?
+        SeasonStat.where('playercard_id = ? AND year = ?', player.id, 2016)[0].update(avg: stats['avg'].to_f, ab: stats['s_ab'].to_i, h: stats['s_h'].to_i, bb: stats['s_bb'].to_i, so: stats['s_so'].to_i, r: stats['s_r'].to_i, sb: stats['s_sb'].to_i, hr: stats['s_hr'].to_i, rbi: stats['s_rbi'].to_i)
       end
     end
   end

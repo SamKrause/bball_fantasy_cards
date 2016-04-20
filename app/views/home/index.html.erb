@@ -1,3 +1,21 @@
-<div id="home">
+<section id="home">
+  <div id="background-filter">
 
-</div>
+    <div id='container'>
+      <% if current_user %>
+        <%= render partial: './home/welcome' %>
+      <% else %>
+        <div id="scoreboard">
+          <div id="signup_container">
+            <div class="sign_button" id="signup-show">Sign Up</div>
+            <div class="sign_button" id="login-show">Login</div>
+          </div>
+        </div>
+        <%= render partial: './users/signup' %>
+        <%= render partial: './users/login' %>
+        <div id="message"></div>
+      <% end %>
+    </div>
+
+  </div>
+</section>

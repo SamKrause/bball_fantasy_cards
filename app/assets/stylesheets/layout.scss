@@ -21,6 +21,12 @@ nav {
 
   }
 
+  #logout-button {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-right: .25rem;
+    padding-left: .25rem;
+  }
   .nav_links {
     float: right;
     margin-right: 1rem;
@@ -32,10 +38,10 @@ nav {
   }
 }
 
-html {
-  background: url(images/kansas_city.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+// html {
+//   background: url(image-path('citizens_bank.jpg')) no-repeat center center fixed;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+// }

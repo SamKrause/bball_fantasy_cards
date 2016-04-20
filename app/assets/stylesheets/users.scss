@@ -1,0 +1,33 @@
+#profile {
+  background: url(image-path('locker_room.jpg')) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+#playercard-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  /* align-items: flex-start | flex-end | center | baseline | stretch; */
+  /* align-content: flex-start | flex-end | center | space-between | space-around | stretch; */
+  background-color: rgba(0, 0, 0, .5);
+  margin-top: 15vh;
+  height: 70vh;
+  width: 100vw;
+}
+
+.playercard {
+  border: black 5px solid;
+  height: 35vh;
+  width: 14vw;
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 15vh;
+}
