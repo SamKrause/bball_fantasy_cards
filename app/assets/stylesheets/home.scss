@@ -1,8 +1,88 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@-webkit-keyframes rightThenLeft {
+    0%   {left: 0%;}
+    50%  {left: 100%;}
+    100% {left: 0%;}
+}
+
 #home {
+  background: url(image-path('citizens_bank.jpg')) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+#background-filter {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, .5);
+  position: fixed;
+  z-index: 1;
 }
+
+#scoreboard {
+  width: 35rem;
+  height: 15.5rem;
+  background-image: url(image-path('on_deck_sign.jpg'));
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 2;
+  position: relative;
+  top: 8rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  #signup_container {
+    position: relative;
+    width: 35rem;
+    height: 5rem;
+    top: 10rem;
+
+    .sign_button {
+      padding-top: 15px;
+      color: yellow;
+      text-align: center;
+      position: relative;
+      &:hover {
+        //white-space: nowrap;
+        //-webkit-animation: rightThenLeft 8s linear;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.panel {
+  display: inline-block;
+  padding: 2em;
+  background: rgb(199, 66, 65);
+  transform: translateX(-150%);
+  transition: .5s transform;
+  position: absolute;
+  left: 0;
+  top: 10em;
+
+  &.show {
+    transform: translateX(0);
+  }
+}
+
+.close {
+  margin-top: -1.5em;
+  margin-right: -1.5em;
+  float: right;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+input {
+  display: block;
+  padding: .5em;
+  margin: 1em;
+}
+
+
