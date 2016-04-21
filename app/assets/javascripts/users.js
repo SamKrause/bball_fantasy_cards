@@ -28,7 +28,6 @@ $(document).ready(function(){
     return card_position;
   });
 
-
 });
 
 function setInitialCards() {

@@ -1,0 +1,21 @@
+<div class="card-button-wrapper">
+  <i id="left-button" class="fa fa-arrow-left" aria-hidden="true"></i>
+</div>
+<% @first_pack.each do |playercard_array| %>
+<div class="playercard-wrapper">
+  <% playercard_array.each do |playercard| %>
+    <div class="playercard">
+      <%= playercard.first_name + ' ' + playercard.last_name %><br>
+      <%= playercard.pro_team_city + ' ' + playercard.pro_team_name %><br>
+      <%= image_tag playercard.picture.url(:thumb) %><br>
+      <%='Position: ' + playercard.position %><br>
+      <%= '#' + playercard.number.to_s %>
+    </div>
+    <% UserPlayercard.create(user_id: current_user.id, playercard_id: playercard.id) %>
+  <% end %>
+</div>
+<% end %>
+<div class="card-button-wrapper" >
+  <i id="right-button" class="fa fa-arrow-right" aria-hidden="true"></i>
+</div>
+<span id="playercard_array_length"><%= @first_pack.length %></span>

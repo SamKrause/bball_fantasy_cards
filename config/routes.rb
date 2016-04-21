@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   post '/sessions/login' => 'sessions#login'
 
   get '/users/profile' => 'users#profile'
-  get '/users/playercards' => 'users#playercards'
+  get '/users/new_pack' => 'users#newPack'
 
 end

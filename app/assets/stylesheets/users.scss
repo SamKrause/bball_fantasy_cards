@@ -59,5 +59,61 @@
 }
 
 #first-pack-wrapper {
-  display: none;
+  text-align: center;
+  color: white;
+  margin-top: 5vh;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+
+  #first-pack-greeting {
+    background-color: rgba(0, 0, 0, .5);
+    display: inline-block;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    margin-bottom: 3vh;
+  }
+  h1 {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
+  h3 {
+    margin-top: 0;
+    margin-bottom: 3vh;
+  }
+}
+#pack-of-cards {
+  background-color: blue;
+  border-top: 10px red solid;
+  border-bottom: 10px red solid;
+  display: inline-block;
+  width: 13rem;
+  padding-bottom: 2rem;
+  &:hover {
+    cursor: pointer;
+    p:first-of-type {
+      border-top: 5px black dashed;
+    }
+  }
+  p:first-of-type {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    color: white;
+    &:visited {
+      color: white;
+    }
+  }
+  p:nth-of-type(2){
+    margin-top: 0;
+    color: white;
+    &:visited {
+      color: white;
+    }
+  }
+}
+
+#card-pack-img {
+  width: 7rem;
+  height: 10rem;
 }

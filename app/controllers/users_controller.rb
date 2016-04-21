@@ -14,7 +14,17 @@ class UsersController < ApplicationController
   def profile
     @playercards = current_user.playercards
     @playercard_arrays = generatePlayercardArrays(current_user.playercards)
-    @first_pack = generatePlayercardArrays(generateFirstPack)
+    if @playercards.count === 0
+      @first_pack = generatePlayercardArrays(generateFirstPack)
+    end
+  end
+
+  def newPack
+    @playercards = current_user.playercards
+    @playercard_arrays = generatePlayercardArrays(current_user.playercards)
+
+    view_string = render_to_string partial: 'users/new_pack'
+    render json: {success: true, new_pack: view_string}
   end
 
   def generatePlayercardArrays(playercards)
@@ -41,6 +51,9 @@ class UsersController < ApplicationController
     end
     Playercard.where(:position => "OF").sample(9).each{|playercard| card_array.push(playercard)}
     Playercard.all.sample(1).each{|playercard| card_array.push(playercard)}
+    card_array.each do |playercard|
+      UserPlayercard.create(user_id: current_user.id, playercard_id: playercard.id)
+    end
     return card_array
   end
 
