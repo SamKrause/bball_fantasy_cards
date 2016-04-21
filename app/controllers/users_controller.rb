@@ -12,15 +12,38 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @playercards = User.find(1).playercards
+    @playercards = current_user.playercards
+    @playercard_arrays = generatePlayercardArrays(current_user.playercards)
+    @first_pack = generatePlayercardArrays(generateFirstPack)
   end
 
-  def playercards
-    @playercards = User.find(1).playercards
-
-    view_string = render_to_string partial: 'users/playercards'
-    render json: {success: true, questions: view_string}
+  def generatePlayercardArrays(playercards)
+    big_array = []
+    small_array = []
+    playercards.each do |player|
+      if small_array.length < 5
+        small_array.push(player)
+      else
+        big_array.push(small_array)
+        small_array = []
+        small_array.push(player)
+      end
+    end
+    big_array.push(small_array)
+    return big_array
   end
+
+  def generateFirstPack
+    card_array = []
+    position_array = ["1B", "2B", "3B", "SS", "C"]
+    position_array.each do |position|
+      Playercard.where(:position => position).sample(3).each{|playercard| card_array.push(playercard)}
+    end
+    Playercard.where(:position => "OF").sample(9).each{|playercard| card_array.push(playercard)}
+    Playercard.all.sample(1).each{|playercard| card_array.push(playercard)}
+    return card_array
+  end
+
 
   private
 

@@ -9,25 +9,55 @@
   position: fixed;
 }
 
-#playercard-wrapper {
+#deck-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+
+.playercard-wrapper {
+  display: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: space-around;
-  /* align-items: flex-start | flex-end | center | baseline | stretch; */
-  /* align-content: flex-start | flex-end | center | space-between | space-around | stretch; */
   background-color: rgba(0, 0, 0, .5);
   margin-top: 15vh;
   height: 70vh;
-  width: 100vw;
+  width: 92vw;
 }
 
 .playercard {
   border: black 5px solid;
   height: 35vh;
-  width: 14vw;
+  width: 13vw;
   background-color: white;
   padding: 1rem;
   text-align: center;
   margin-top: 15vh;
+}
+
+.card-button-wrapper {
+  height: 70vh;
+  width: 4vw;
+  margin-top: 15vh;
+  background-color: black;
+  i {
+    position: relative;
+    color: white;
+    font-size: 2.5rem;
+    margin-top: 30vh;
+    margin-left: 0.5rem;
+    &:hover {
+      cursor: pointer;
+      color: red;
+    }
+  }
+}
+
+#playercard_array_length {
+  display: none;
+}
+
+#first-pack-wrapper {
+  display: none;
 }

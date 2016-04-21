@@ -14,6 +14,15 @@ class CBS
     end
   end
 
+  def self.playerPictures
+    Playercard.all.each do |player|
+      uri = URI("http://api.cbssports.com/fantasy/players/profile?player_id=" + player.cbs_id.to_s + "&version=3.0&response_format=JSON&SPORT=baseball")
+      results = JSON.parse(Net::HTTP.get(uri))
+      photo = results['body']['player_profile']['player']['photo']
+      Playercard.find(player.id).update(picture: photo)
+    end
+  end
+
 end
   #Code for Creating Playercards from CBS API
   # def self.cbsCreatePlayercards
