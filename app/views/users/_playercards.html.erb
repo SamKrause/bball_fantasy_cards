@@ -3,8 +3,9 @@
     <div class="playercard">
       <%= playercard.first_name + ' ' + playercard.last_name %><br>
       <%= playercard.pro_team_city + ' ' + playercard.pro_team_name %><br>
+      <%= image_tag playercard.picture.url(:thumb) %><br>
       <%='Position: ' + playercard.position %><br>
-      <%= 'Number: #' + playercard.number.to_s %>
+      <%= '#' + playercard.number.to_s %>
     </div>
   <% end %>
 

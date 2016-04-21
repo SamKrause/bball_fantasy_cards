@@ -47,14 +47,23 @@
       text-align: center;
       position: relative;
       &:hover {
-        //white-space: nowrap;
-        //-webkit-animation: rightThenLeft 8s linear;
         cursor: pointer;
         text-decoration: underline;
+      }
+      &:visited {
+        text-decoration: none;
       }
     }
   }
 }
+
+#welcome {
+  padding-top: 15px;
+  color: yellow;
+  text-align: center;
+  position: relative;
+}
+
 .panel {
   display: inline-block;
   padding: 2em;

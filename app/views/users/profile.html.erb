@@ -1,8 +1,47 @@
 <section id="profile">
   <div id="background-filter">
-    <div id="deck-wrapper">
-      <%= render partial: './users/playercards' %>
+
+    <% if @playercard_arrays.count > 1 %>
+
+      <div id="deck-wrapper">
+        <div class="card-button-wrapper">
+          <i id="left-button" class="fa fa-arrow-left" aria-hidden="true"></i>
+        </div>
+        <% @playercard_arrays.each do |playercard_array| %>
+        <div class="playercard-wrapper">
+          <% playercard_array.each do |playercard| %>
+            <div class="playercard">
+              <%= playercard.first_name + ' ' + playercard.last_name %><br>
+              <%= playercard.pro_team_city + ' ' + playercard.pro_team_name %><br>
+              <%= image_tag playercard.picture.url(:thumb) %><br>
+              <%='Position: ' + playercard.position %><br>
+              <%= '#' + playercard.number.to_s %>
+            </div>
+          <% end %>
+        </div>
+        <% end %>
+        <div class="card-button-wrapper" >
+          <i id="right-button" class="fa fa-arrow-right" aria-hidden="true"></i>
+        </div>
+        <span id="playercard_array_length"><%= @playercard_arrays.length %></span>
       </div>
-    </div>
+
+    <% else %>
+
+      <div id="first-pack-wrapper">
+        <div id="first-pack-greeting">
+          <h1>Start your new deck!</h1>
+          <h3>Click on the pack of cards to see what players you have.</h3>
+        </div><br>
+        <a href="/users/profile">
+          <div id="pack-of-cards">
+            <p>ON DECK</p>
+            <p>Starter Pack</p>
+            <%= image_tag("player_sillhouette.jpg", id: "card-pack-img") %>
+          </div>
+        </a>
+      </div>
+
+    <% end %>
   </div>
 </section>
